@@ -1,14 +1,21 @@
 import { useState } from "react";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form /* Button */ } from "react-bootstrap";
 import Job from "./Job";
 //import Favourites from "./Favourites";
-import { Link } from "react-router-dom";
+import { Link /* useNavigate */ } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { getJobsAction } from "../redux/actions";
 
 const MainSearch = () => {
   const [query, setQuery] = useState("");
-  const [jobs, setJobs] = useState([]);
+  //const [jobs, setJobs] = useState([]);
 
-  const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
+  const jobs = useSelector((state) => state.job.results);
+  const dispatch = useDispatch();
+  //const navigate = useNavigate();
+
+  //const baseEndpoint = "https://strive-benchmark.herokuapp.com/api/jobs?search=";
 
   const handleChange = (e) => {
     setQuery(e.target.value);
@@ -16,8 +23,9 @@ const MainSearch = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    dispatch(getJobsAction(query));
 
-    try {
+    /* try {
       const response = await fetch(baseEndpoint + query + "&limit=20");
       if (response.ok) {
         const { data } = await response.json();
@@ -27,12 +35,13 @@ const MainSearch = () => {
       }
     } catch (error) {
       console.log(error);
-    }
+    } */
   };
 
   return (
     <Container>
       <div>
+        {/* <Button onClick={() => navigate("/preferiti")}>Preferit</Button> */}
         <Link to="/preferiti" className="btn btn-primary mt-2">
           Preferiti
           {/* <Favourites /> */}

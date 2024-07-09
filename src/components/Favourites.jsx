@@ -1,19 +1,21 @@
-import { Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
+import { Button, Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { removeFromFavouriteAction } from "../redux/actions";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites.content);
   console.log(favourites);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <Container>
       <Row>
         <Col xs={12} className="text-center">
           <h1>Preferiti</h1>
+          <Button onClick={() => navigate("/")}>Home</Button>
         </Col>
         <Col>
           <ListGroup>

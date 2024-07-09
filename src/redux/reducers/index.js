@@ -30,3 +30,5 @@ const mainReducer = (state = initialState, action) => {
 };
 
 export default mainReducer;
+
+// questo file può essere anche cancellato.. non ha più senso di esistere!
