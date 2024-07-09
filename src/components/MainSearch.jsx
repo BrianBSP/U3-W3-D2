@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import Job from "./Job";
-import Favourites from "./Favourites";
+//import Favourites from "./Favourites";
 import { Link } from "react-router-dom";
 
 const MainSearch = () => {
@@ -35,7 +35,7 @@ const MainSearch = () => {
       <div>
         <Link to="/preferiti" className="btn btn-primary mt-2">
           Preferiti
-          <Favourites />
+          {/* <Favourites /> */}
         </Link>
       </div>
       <Row>
