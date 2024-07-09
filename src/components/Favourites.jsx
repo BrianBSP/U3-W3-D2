@@ -2,6 +2,7 @@ import { Col, Container, ListGroup, ListGroupItem, Row } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { removeFromFavouriteAction } from "../redux/actions";
 
 const Favourites = () => {
   const favourites = useSelector((state) => state.favourites.content);
@@ -20,15 +21,7 @@ const Favourites = () => {
               <ListGroupItem key={i}>
                 <p>
                   ⭐️ <Link to={"/" + fav.company_name}>{fav.company_name}</Link>{" "}
-                  <span
-                    className="ms-2"
-                    onClick={() =>
-                      dispatch({
-                        type: "REMOVE_FROM_FAVOURITES",
-                        payload: fav,
-                      })
-                    }
-                  >
+                  <span className="ms-2" onClick={() => dispatch(removeFromFavouriteAction(fav._id))}>
                     🚮
                   </span>
                 </p>
